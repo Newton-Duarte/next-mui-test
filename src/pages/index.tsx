@@ -17,6 +17,8 @@ import { useForm } from 'react-hook-form';
 
 import * as zod from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod'
+import { GetServerSideProps } from 'next';
+import { withSSRGuest } from '@/utils/withSSRGuest';
 
 const loginFormSchema = zod.object({
   email: zod.string().email('Informe o e-mail'),
@@ -105,3 +107,12 @@ export default function SignIn() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = withSSRGuest(
+  // eslint-disable-next-line no-unused-vars
+  async (ctx) => {
+    return {
+      props: {},
+    };
+  }
+);
