@@ -22,7 +22,7 @@ export function withSSRAuth<P extends { [key: string]: any }>(
     // eslint-disable-next-line consistent-return
   ): Promise<GetServerSidePropsResult<P>> => {
     const cookies = parseCookies(ctx);
-    const token = cookies['aguaamigao.token'];
+    const token = cookies['app.token'];
 
     if (!token) {
       return {
@@ -53,8 +53,8 @@ export function withSSRAuth<P extends { [key: string]: any }>(
       return await fn(ctx);
     } catch (err) {
       if (err instanceof AuthTokenError) {
-        destroyCookie(ctx, 'aguaamigao.token');
-        destroyCookie(ctx, 'aguaamigao.refreshToken');
+        destroyCookie(ctx, 'app.token');
+        destroyCookie(ctx, 'app.refreshToken');
 
         return {
           redirect: {

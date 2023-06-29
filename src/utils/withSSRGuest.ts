@@ -15,7 +15,7 @@ export function withSSRGuest<P extends { [key: string]: any }>(
     ctx: GetServerSidePropsContext
   ): Promise<GetServerSidePropsResult<P>> => {
     const cookies = parseCookies(ctx);
-    const token = cookies['aguaamigao.token'];
+    const token = cookies['app.token'];
 
     if (token) {
       const user = decode<{ permissions: string[]; is_admin: boolean }>(token);

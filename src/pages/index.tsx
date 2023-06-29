@@ -8,7 +8,6 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { Login } from '@mui/icons-material';
@@ -21,8 +20,8 @@ import { GetServerSideProps } from 'next';
 import { withSSRGuest } from '@/utils/withSSRGuest';
 
 const loginFormSchema = zod.object({
-  email: zod.string().email('Informe o e-mail'),
-  password: zod.string().min(6, 'Informe a senha'),
+  email: zod.string().email('Required'),
+  password: zod.string().min(6, 'Required'),
 });
 
 type LoginFormData = zod.infer<typeof loginFormSchema>;
@@ -48,7 +47,7 @@ export default function SignIn() {
   return (
     <>
       <Head>
-        <title>Água Amigão | Login</title>
+        <title>Next Mui Test | Login</title>
       </Head>
       <Container maxWidth="lg">
         <Stack height="100dvh" alignItems="center" justifyContent="center">
@@ -68,7 +67,7 @@ export default function SignIn() {
                 spacing={3}
               >
                 <Typography color="primary" variant="h5" fontWeight="bold">
-                  Água Amigão - Login
+                  Next MUI Test - Login
                 </Typography>
                 <TextField
                   type="email"
@@ -96,7 +95,7 @@ export default function SignIn() {
                 <Divider />
                 <Link href="/forgot-password">
                   <Button variant="text" size="small" fullWidth>
-                    Esqueceu a senha?
+                    Forgot password?
                   </Button>
                 </Link>
               </Stack>
