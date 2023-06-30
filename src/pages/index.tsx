@@ -106,3 +106,12 @@ export default function SignIn() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = withSSRGuest(
+  // eslint-disable-next-line no-unused-vars
+  async (ctx) => {
+    return {
+      props: {},
+    };
+  }
+);
