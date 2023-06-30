@@ -14,41 +14,6 @@ export function withSSRGuest<P extends { [key: string]: any }>(
   return async (
     ctx: GetServerSidePropsContext
   ): Promise<GetServerSidePropsResult<P>> => {
-    const cookies = parseCookies(ctx);
-    const token = cookies['app.token'];
-
-    if (token) {
-      const user = decode<{ permissions: string[]; is_admin: boolean }>(token);
-
-      const userAvailablePages: string[] = getUserAvailablePages(
-        user.permissions
-      );
-
-      if (user.is_admin || userAvailablePages.includes('dashboard')) {
-        return {
-          redirect: {
-            destination: '/dashboard',
-            permanent: false,
-          },
-        };
-      }
-
-      const firstAvailablePage = userAvailablePages[0];
-
-      if (!firstAvailablePage) {
-        return {
-          notFound: true,
-        };
-      }
-
-      return {
-        redirect: {
-          destination: `/${firstAvailablePage}`,
-          permanent: false,
-        },
-      };
-    }
-
     // eslint-disable-next-line no-return-await
     return await fn(ctx);
   };
