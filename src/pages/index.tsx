@@ -106,9 +106,3 @@ export default function SignIn() {
     </>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  return {
-    props: {},
-  };
-}
