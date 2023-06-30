@@ -71,14 +71,14 @@ export default function SignIn() {
                 </Typography>
                 <TextField
                   type="email"
-                  label="E-mail"
+                  label="Email"
                   error={!!errors.email}
                   helperText={errors.email?.message}
                   {...register('email')}
                 />
                 <TextField
                   type="password"
-                  label="Senha"
+                  label="Password"
                   error={!!errors.password}
                   helperText={errors.password?.message}
                   {...register('password')}
@@ -90,7 +90,7 @@ export default function SignIn() {
                   size="large"
                   variant="contained"
                 >
-                  Entrar
+                  Login
                 </Button>
                 <Divider />
                 <Link href="/forgot-password">
